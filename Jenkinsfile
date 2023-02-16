@@ -12,7 +12,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    cat readme.md
+                    cat README.md
                     '''
             }
         }
