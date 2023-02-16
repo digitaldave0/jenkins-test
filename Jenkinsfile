@@ -8,7 +8,7 @@ pipeline {
         }
         stage('cat README'){
             when {
-                branch "dev-*"
+                branch "dev"
             }
             steps {
                 sh '''
