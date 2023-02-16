@@ -6,4 +6,3 @@ pipeline {
       steps {
         echo "hello"
       }
-    }
