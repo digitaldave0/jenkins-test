@@ -1,21 +1,24 @@
 pipeline {
-    agent any 
+    agent any
+
     stages {
-        stage('Stage 1') {
+        stage('Checkout') {
             steps {
-                echo 'Hello world!' 
+                // Checkout the code from Git
+                git 'https://github.com/your-repository.git'
             }
         }
-
-        stage('cat README'){
-            when {
-                branch "dev"
-            }
+        
+        stage('Build and Publish Docker Image') {
             steps {
-                sh '''
-                    cat README.md
-                    '''
+                // Build the Docker image
+                script {
+                    def dockerImage = docker.build("your-image-name:${env.BUILD_NUMBER}")
+                    // Push the Docker image to a registry
+                    dockerImage.push()
+                }
             }
         }
     }
 }
+
